@@ -24,7 +24,7 @@ namespace RestrauntHost.Main
 
             _serviceProvider = serviceCollection.BuildServiceProvider();
 
-            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+            var mainWindow = _serviceProvider.GetRequiredService<MainPage>();
             mainWindow.Show();
         }
 
@@ -41,7 +41,7 @@ namespace RestrauntHost.Main
             services.AddSingleton<IMainViewModel, MainViewModel>();
 
             // Register Views
-            services.AddSingleton<MainWindow>();
+            services.AddSingleton<MainPage>();
 
         }
 

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace RestrauntHost.Main.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Window
     {
-        public MainWindow(IMainViewModel viewModel)
+        public MainPage(IMainViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;
