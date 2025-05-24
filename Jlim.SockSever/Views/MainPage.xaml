@@ -41,8 +41,9 @@
                 <TextBlock Foreground="Black">Dock = "Bottom"</TextBlock>
             </Border>
 
-            <Border Background="White" BorderBrush="Black" BorderThickness="1">
-                <TextBlock Foreground="Black">This content will "Fill" the remaining space</TextBlock>
+            <Border Background="White" BorderBrush="Black" BorderThickness="1">  <!--가운데 dockPannel-->
+                <ContentControl Content="{Binding CurrentViewModel}"/>
+
             </Border>
         </DockPanel>
         <!--<StackPanel>

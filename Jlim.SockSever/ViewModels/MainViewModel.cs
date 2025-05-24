@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System.Windows;
 
 namespace RestrauntHost.Main.ViewModels
 {
@@ -41,7 +42,14 @@ namespace RestrauntHost.Main.ViewModels
         [RelayCommand]
         private void ChangeMenuBtn()
         {
-            
+           foreach(KeyValuePair<string, bool> pair in MenuChecked)
+            {
+                if(pair.Value == true)
+                {
+                    MessageBox.Show(pair.Key);
+                }
+            }
+
         }
         [RelayCommand]
         private async Task SaveAsync()
