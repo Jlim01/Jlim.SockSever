@@ -22,10 +22,16 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <RadioButton Content="테이블 현황" Style="{DynamicResource MenuRadioBtn}"/>
+                    <RadioButton Content="테이블 현황"
+                                 IsChecked="{Binding MenuChecked[TableStatusViewModel]}"
+                                 Command="{Binding ChangeMenuBtnCommand}"
+                                 Style="{DynamicResource MenuRadioBtn}"/>
 
 
-                    <RadioButton Content="결제 이력" Style="{DynamicResource MenuRadioBtn}" Grid.Column="1"/>
+                    <RadioButton Content="결제 이력" 
+                                 IsChecked="{Binding MenuChecked[PaymentHistoryViewModel]}"
+                                 Command="{Binding ChangeMenuBtnCommand}"
+                                 Style="{DynamicResource MenuRadioBtn}" Grid.Column="1"/>
 
 
                 </Grid>

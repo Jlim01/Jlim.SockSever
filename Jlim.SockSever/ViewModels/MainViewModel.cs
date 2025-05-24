@@ -15,13 +15,34 @@ namespace RestrauntHost.Main.ViewModels
     {
         private readonly ILogger<MainViewModel> _logger;
         private readonly IUserService _userService;
+
+        public Dictionary<string, bool> MenuChecked { get; set; } = new();
         public MainViewModel(ILogger<MainViewModel> logger, IUserService userService)
         {
             _logger = logger;
             _userService = userService;
+
+            InitMenuChecked();
+            RegisterMessage();
         }
 
+        private void RegisterMessage()
+        {
+            
+        }
 
+        private void InitMenuChecked()
+        {
+            if(MenuChecked.Count > 0) MenuChecked.Clear();
+            MenuChecked.Add("TableStatusViewModel", true);
+            MenuChecked.Add("PaymentHistoryViewModel", false);
+        }
+
+        [RelayCommand]
+        private void ChangeMenuBtn()
+        {
+            
+        }
         [RelayCommand]
         private async Task SaveAsync()
         {
