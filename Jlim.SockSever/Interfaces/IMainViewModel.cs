@@ -9,6 +9,6 @@ namespace RestrauntHost.Main.Interfaces
 {
     public interface IMainViewModel
     {
-        ICommand SaveCommand { get; }
+        //ICommand SaveCommand { get; }
     }
 }

@@ -4,14 +4,51 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RestrauntHost.Main.Views"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:rhMain="clr-namespace:RestrauntHost.Main"
         mc:Ignorable="d"
         
-        
-        Title="MainPage" Height="450" Width="800">
+        Title="MainPage" Height="550" Width="950">
+
     <Grid>
-        <Button Content="Save"
+        <DockPanel>
+            <Border Width="200" Background="PaleGreen" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Left">
+                <TextBlock Foreground="Black">Dock = "Left"</TextBlock>
+            </Border>
+            <Border Height="50" Background="SkyBlue" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton Content="테이블 현황" Style="{DynamicResource MenuRadioBtn}"/>
+
+
+                    <RadioButton Content="결제 이력" Style="{DynamicResource MenuRadioBtn}" Grid.Column="1"/>
+
+
+                </Grid>
+            </Border>
+
+            <Border Height="25" Background="LemonChiffon" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Bottom">
+                <TextBlock Foreground="Black">Dock = "Bottom"</TextBlock>
+            </Border>
+
+            <Border Background="White" BorderBrush="Black" BorderThickness="1">
+                <TextBlock Foreground="Black">This content will "Fill" the remaining space</TextBlock>
+            </Border>
+        </DockPanel>
+        <!--<StackPanel>
+            <Button Content="Save"
                 Command ="{Binding SaveCommand}"
                 Width="100" Height="30"/>
+
+            <ComboBox>
+                <ComboBoxItem>AAA</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>-->
+
+
     </Grid>
 </mah:MetroWindow>

@@ -1,0 +1,134 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--BTN Color-->
+    <Color x:Key="ColorBtnDefault">#FF46AABB</Color>        <!--일반 버튼 색-->
+    <Color x:Key="ColorBtnHover">#000000</Color>          <!--커서 올라갔을 때 강조-->
+    <Color x:Key="ColorBtnHoverZero">#000000</Color>      <!--	마우스가 올라갔지만 투명 배경 위에서 은은하게 처리하고 싶을 때-->
+    <Color x:Key="ColorBtnPressed">#000000</Color>
+    <Color x:Key="ColorBtnPressedZero">#000000</Color>    <!--눌렀을 때 효과를 투명하게 표현 (ex: 그림자 느낌만 주기)-->
+    
+    <!--Border Color-->
+    <Color x:Key="ColorBorderDefault">#AA444444</Color>     <!--일반 테두리-->
+    <Color x:Key="ColorBorderHover">#000000</Color>       <!--테두리 강조 (Hover 시)-->
+    <Color x:Key="ColorBorderHoverZero"></Color>   <!--투명한 테두리 강조 (Hover 시 효과는 있지만 배경과 섞이는 형태)-->
+
+    <!--Brush Color-->
+    <Color x:Key="ColorBrushDefault">#000000</Color>
+    <!--일반 버튼 색-->
+    <Color x:Key="ColorBrushHover">#000000</Color>
+    <!--커서 올라갔을 때 강조-->
+
+    <SolidColorBrush x:Key="BrushBtnDefault" Color="{StaticResource ColorBtnDefault}"/>
+    <SolidColorBrush x:Key="BrushBoderDefault" Color="{StaticResource ColorBorderDefault}"/>
+    <SolidColorBrush x:Key="BrushBoderHover" Color="{StaticResource ColorBorderHover}"/>
+    <SolidColorBrush x:Key="BrushBoderHoverZero" Color="{StaticResource ColorBorderDefault}"/>
+    <SolidColorBrush x:Key="MenuBtnDefault"         Color="#01FFFFFF"/>
+    <SolidColorBrush x:Key="MenuBtnPressed"         Color="#FF299DF4"/>
+    
+    <Style x:Key="MenuRadioBtn" TargetType="{x:Type RadioButton}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="{StaticResource BrushBtnDefault}"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid>
+                        <Border x:Name="border" 
+                           BorderThickness="0"
+                           Padding="{TemplateBinding Padding}" 
+                           BorderBrush= "{StaticResource BrushBoderDefault}" 
+                           Background="{TemplateBinding Background}"
+                           Margin="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <Border x:Name="borderPressed" 
+                           BorderThickness="0"
+                           Padding="{TemplateBinding Padding}" 
+                           BorderBrush= "{StaticResource BrushBoderHover}" 
+                           Background="#33000000"
+                           Opacity="0"
+                           Margin="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                            <BeginStoryboard x:Name="mouseEnterBeginStoryboard">
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="borderPressed" To="1" Duration="0:0:0.25"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                            <BeginStoryboard x:Name="mouseLeaveBeginStoryboard">
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="borderPressed" To="0" Duration="0:0:1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="ButtonBase.Click">
+                            <BeginStoryboard x:Name="ButtonClickBeginStoryboard">
+                                <Storyboard>
+                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="borderPressed">
+                                        <EasingColorKeyFrame KeyTime="0:0:0.01" Value="#33AAAAAA"/>
+                                        <EasingColorKeyFrame KeyTime="0:0:0.5" Value="#33000000"/>
+                                    </ColorAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="True"/>
+                    <Condition Property="IsChecked" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{StaticResource MenuBtnDefault}"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="True"/>
+                    <Condition Property="IsChecked" Value="True"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{StaticResource MenuBtnPressed}"/>
+                <Setter Property="Foreground" Value="White"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsEnabled" Value="false"/>
+                    <Condition Property="IsChecked" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{StaticResource MenuBtnDefault}"/>
+                <Setter Property="Foreground" Value="Gray"/>
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="TableStatusBtn" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="#000000"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="2">
+                        
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

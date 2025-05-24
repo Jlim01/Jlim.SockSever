@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace RestrauntHost.Main.ViewModels
 {
-    public class MainViewModel : IMainViewModel
+    public partial class MainViewModel :ObservableObject, IMainViewModel
     {
         private readonly ILogger<MainViewModel> _logger;
         private readonly IUserService _userService;
@@ -19,11 +20,10 @@ namespace RestrauntHost.Main.ViewModels
             _logger = logger;
             _userService = userService;
         }
-        private ICommand _saveCommand;
-        public ICommand SaveCommand =>
-            _saveCommand ??= new AsyncRelayCommand(ExecuteSaveAsync);
 
-        private async Task ExecuteSaveAsync()
+
+        [RelayCommand]
+        private async Task SaveAsync()
         {
             try
             {
