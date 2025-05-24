@@ -1,4 +1,4 @@
-﻿using Jlim.SockSever.Interfaces;
+﻿using RestrauntHost.Main.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Jlim.SockSever.Services
+namespace RestrauntHost.Main.Services
 {
     public class UserService : IUserService
     {

@@ -1,13 +1,13 @@
-﻿using Jlim.SockSever.Interfaces;
-using Jlim.SockSever.Services;
-using Jlim.SockSever.ViewModels;
-using Jlim.SockSever.Views;
+﻿using RestrauntHost.Main.Interfaces;
+using RestrauntHost.Main.Services;
+using RestrauntHost.Main.ViewModels;
+using RestrauntHost.Main.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using System.Data;
 using System.Windows;
 
-namespace Jlim.SockSever
+namespace RestrauntHost.Main
 {
     /// <summary>
     /// Interaction logic for App.xaml

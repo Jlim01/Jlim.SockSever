@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using Jlim.SockSever.Interfaces;
+using RestrauntHost.Main.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Jlim.SockSever.ViewModels
+namespace RestrauntHost.Main.ViewModels
 {
     public class MainViewModel : IMainViewModel
     {

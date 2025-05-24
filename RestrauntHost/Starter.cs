@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace RestrauntHost.Main.Interfaces
+namespace RestrauntHost
 {
-    public interface IUserService
+    internal class Starter
     {
-        Task SaveUserDataAsync();
     }
 }

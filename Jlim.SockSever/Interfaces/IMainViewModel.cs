@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Jlim.SockSever.Interfaces
+namespace RestrauntHost.Main.Interfaces
 {
     public interface IMainViewModel
     {

@@ -1,4 +1,4 @@
-﻿using Jlim.SockSever.Interfaces;
+﻿using RestrauntHost.Main.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Jlim.SockSever.Views
+namespace RestrauntHost.Main.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
