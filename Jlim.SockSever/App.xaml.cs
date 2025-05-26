@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using System.Data;
 using System.Windows;
+using RestruantHost.Main.Views;
+using RestruantHost.Main.ViewModels;
 
 namespace RestrauntHost.Main
 {
@@ -39,9 +41,13 @@ namespace RestrauntHost.Main
 
             // Register ViewModels
             services.AddSingleton<IMainViewModel, MainViewModel>();
+            services.AddSingleton<TableStatusViewModel>();
+            services.AddSingleton<PaymentHistoryViewModel>();
 
             // Register Views
             services.AddSingleton<MainPage>();
+            services.AddSingleton<TableStatusView>();
+            services.AddSingleton<PaymentHistoryView>();
 
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestruantHost.Core.Enums
 {
-    internal class MessageType
+    internal class SockMessageType
     {
     }
 }

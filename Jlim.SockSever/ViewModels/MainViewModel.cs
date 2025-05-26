@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows;
+using CommunityToolkit.Mvvm.Messaging;
+using RestruantHost.Main.Services.MessengerService;
 
 namespace RestrauntHost.Main.ViewModels
 {
@@ -29,7 +31,7 @@ namespace RestrauntHost.Main.ViewModels
 
         private void RegisterMessage()
         {
-            
+
         }
 
         private void InitMenuChecked()
@@ -47,6 +49,7 @@ namespace RestrauntHost.Main.ViewModels
                 if(pair.Value == true)
                 {
                     MessageBox.Show(pair.Key);
+                    WeakReferenceMessenger.Default.Send(new MenuChangeMsg(pair.Key.ToString()));
                 }
             }
 

@@ -25,7 +25,12 @@
     <SolidColorBrush x:Key="BrushBoderHoverZero" Color="{StaticResource ColorBorderDefault}"/>
     <SolidColorBrush x:Key="MenuBtnDefault"         Color="#01FFFFFF"/>
     <SolidColorBrush x:Key="MenuBtnPressed"         Color="#FF299DF4"/>
-    
+
+    <Style x:Key="TableBtn" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="#80000000"/>
+        
+    </Style>
     <Style x:Key="MenuRadioBtn" TargetType="{x:Type RadioButton}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Background" Value="{StaticResource BrushBtnDefault}"/>
