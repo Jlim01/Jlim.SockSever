@@ -27,10 +27,17 @@ namespace RestrauntHost.Main
             _serviceProvider = serviceCollection.BuildServiceProvider();
 
             var mainWindow = _serviceProvider.GetRequiredService<MainPage>();
+            _serviceProvider.GetRequiredService<PaymentHistoryView>();
+            _serviceProvider.GetService<PaymentHistoryViewModel>();
+            _serviceProvider.GetService<TableStatusView>();
+            _serviceProvider.GetService<TableStatusViewModel>();
+
             mainWindow.Show();
+
+
         }
 
-        private void ConfigureService(IServiceCollection services)
+        private IServiceProvider ConfigureService(IServiceCollection services)
         {
             // Configure Logging
             //TODO: https://learn.microsoft.com/ko-kr/dotnet/core/extensions/logging?tabs=command-line  로그 파일 구분 환경 구축
@@ -49,6 +56,8 @@ namespace RestrauntHost.Main
             services.AddSingleton<TableStatusView>();
             services.AddSingleton<PaymentHistoryView>();
 
+
+            return services.BuildServiceProvider();
         }
 
         private void OnExit(object sender, ExitEventArgs e)

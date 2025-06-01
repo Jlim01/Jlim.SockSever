@@ -7,11 +7,30 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Button></Button>
-        <Button Grid.Column="1"></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="Green" BorderThickness="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="행" Background="Yellow"/>
+                <TextBox Grid.Column="1"/>
+
+                <Label Content="열" Background="AliceBlue" Grid.Row ="1"/>
+                <TextBox Grid.Row="1" Grid.Column="1"/>
+                <Button Content="등록" Grid.Column="2" Grid.RowSpan="2"/>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

@@ -22,8 +22,4 @@
     <ProjectReference Include="..\RestruantHost.Infrastructure\RestruantHost.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Ctrl\" />
-  </ItemGroup>
-
 </Project>

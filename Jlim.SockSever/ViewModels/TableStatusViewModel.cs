@@ -11,6 +11,10 @@ namespace RestruantHost.Main.ViewModels
 {
     class TableStatusViewModel
     {
+        public TableStatusViewModel()
+        {
+            int t = 0;
+        }
         private void RegisterMessage()
         {
             WeakReferenceMessenger.Default.Register<TableStatusViewModel, MenuChangeMsg>(this, (r, m) => OnChangeMenu(m));
