@@ -22,13 +22,15 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <RadioButton Content="테이블 현황"
+                    <RadioButton x:Name="TableStatusView"
+                                 Content="테이블 현황"
                                  IsChecked="{Binding MenuChecked[TableStatusViewModel]}"
                                  Command="{Binding ChangeMenuBtnCommand}"
                                  Style="{DynamicResource MenuRadioBtn}"/>
 
 
-                    <RadioButton Content="결제 이력" 
+                    <RadioButton x:Name="PaymentHistoryView"
+                                 Content="결제 이력" 
                                  IsChecked="{Binding MenuChecked[PaymentHistoryViewModel]}"
                                  Command="{Binding ChangeMenuBtnCommand}"
                                  Style="{DynamicResource MenuRadioBtn}" Grid.Column="1"/>
@@ -42,8 +44,11 @@
             </Border>
 
             <Border Background="White" BorderBrush="Black" BorderThickness="1">  <!--가운데 dockPannel-->
-                <local:TableStatusView/>
-
+                <Grid x:Name="GridView">
+                    <local:TableStatusView Visibility="{Binding ElementName=TableStatusView, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    <local:PaymentHistoryView Visibility="{Binding ElementName=PaymentHistoryView, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                </Grid>
+                
             </Border>
         </DockPanel>
 

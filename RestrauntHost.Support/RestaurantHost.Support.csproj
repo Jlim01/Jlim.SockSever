@@ -7,9 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Converters\**" />
+    <EmbeddedResource Remove="Converters\**" />
+    <None Remove="Converters\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Converters\" />
     <Folder Include="Constants\" />
   </ItemGroup>
 

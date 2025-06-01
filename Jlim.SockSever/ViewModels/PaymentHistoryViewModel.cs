@@ -22,7 +22,7 @@ namespace RestaurantHost.Main.ViewModels
 
         private void OnChangeMenu(MenuChangeMsg m)
         {
-            MessageBox.Show("enter 1");
+
         }
     }
 }

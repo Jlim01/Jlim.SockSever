@@ -11,10 +11,7 @@ namespace RestaurantHost.Main.ViewModels
 {
     class TableStatusViewModel
     {
-        public TableStatusViewModel()
-        {
-            int t = 0;
-        }
+
         private void RegisterMessage()
         {
             WeakReferenceMessenger.Default.Register<TableStatusViewModel, MenuChangeMsg>(this, (r, m) => OnChangeMenu(m));
@@ -22,7 +19,7 @@ namespace RestaurantHost.Main.ViewModels
 
         private void OnChangeMenu(MenuChangeMsg m)
         {
-            MessageBox.Show("enter 2");
+
         }
     }
 }
