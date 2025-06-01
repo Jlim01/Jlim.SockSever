@@ -1,4 +1,4 @@
-﻿using RestrauntHost.Main.Interfaces;
+﻿using RestaurantHost.Main.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace RestrauntHost.Main.Services
+namespace RestaurantHost.Main.Services
 {
     public class UserService : IUserService
     {

@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RestrauntHost.Support\RestrauntHost.Support.csproj" />
-    <ProjectReference Include="..\RestruantHost.Core\RestruantHost.Core.csproj" />
-    <ProjectReference Include="..\RestruantHost.Infrastructure\RestruantHost.Infrastructure.csproj" />
+    <ProjectReference Include="..\RestrauntHost.Support\RestaurantHost.Support.csproj" />
+    <ProjectReference Include="..\RestruantHost.Core\RestaurantHost.Core.csproj" />
+    <ProjectReference Include="..\RestruantHost.Infrastructure\RestaurantHost.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

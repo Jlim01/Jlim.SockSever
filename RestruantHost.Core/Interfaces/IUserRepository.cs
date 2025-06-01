@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestruantHost.Core.Interfaces
+namespace RestaurantHost.Core.Interfaces
 {
     internal class IUserRepository
     {

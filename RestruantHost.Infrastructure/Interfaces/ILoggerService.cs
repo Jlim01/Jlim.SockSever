@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestruantHost.Infrastructure.Interfaces
+namespace RestaurantHost.Infrastructure.Interfaces
 {
     internal class ILoggerService
     {

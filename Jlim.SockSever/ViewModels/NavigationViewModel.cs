@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestruantHost.Main.ViewModels
+namespace RestaurantHost.Main.ViewModels
 {
     internal class NavigationViewModel
     {

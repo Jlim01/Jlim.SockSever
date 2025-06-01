@@ -1,12 +1,12 @@
-﻿<mah:MetroWindow x:Class="RestrauntHost.Main.Views.MainPage"
+﻿<mah:MetroWindow x:Class="RestaurantHost.Main.Views.MainPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RestrauntHost.Main.Views"
+        xmlns:local="clr-namespace:RestaurantHost.Main.Views"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        xmlns:rhMain="clr-namespace:RestrauntHost.Main"
+        xmlns:rhMain="clr-namespace:RestaurantHost.Main"
         mc:Ignorable="d"
         
         Title="MainPage" Height="550" Width="950">
@@ -42,19 +42,10 @@
             </Border>
 
             <Border Background="White" BorderBrush="Black" BorderThickness="1">  <!--가운데 dockPannel-->
-                <ContentControl Content="{Binding CurrentViewModel}"/>
+                <local:TableStatusView/>
 
             </Border>
         </DockPanel>
-        <!--<StackPanel>
-            <Button Content="Save"
-                Command ="{Binding SaveCommand}"
-                Width="100" Height="30"/>
-
-            <ComboBox>
-                <ComboBoxItem>AAA</ComboBoxItem>
-            </ComboBox>
-        </StackPanel>-->
 
 
     </Grid>

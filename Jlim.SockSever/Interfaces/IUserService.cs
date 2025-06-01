@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace RestrauntHost.Main.Interfaces
+namespace RestaurantHost.Main.Interfaces
 {
     public interface IUserService
     {

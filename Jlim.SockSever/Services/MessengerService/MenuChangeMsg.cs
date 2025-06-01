@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace RestruantHost.Main.Services.MessengerService
+namespace RestaurantHost.Main.Services.MessengerService
 {
     public class MenuChangeMsg
     {

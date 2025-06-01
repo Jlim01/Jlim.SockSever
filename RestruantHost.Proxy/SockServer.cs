@@ -1,4 +1,4 @@
-﻿namespace RestruantHost.Proxy
+﻿namespace RestaurantHost.Proxy
 {
     public class SockServer
     {

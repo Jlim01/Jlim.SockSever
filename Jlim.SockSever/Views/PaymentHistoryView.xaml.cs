@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RestruantHost.Main.Views
+namespace RestaurantHost.Main.Views
 {
     /// <summary>
     /// Interaction logic for PaymentHistoryView.xaml

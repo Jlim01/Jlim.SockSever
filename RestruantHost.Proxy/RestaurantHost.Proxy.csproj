@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RestrauntHost.Support\RestrauntHost.Support.csproj" />
-    <ProjectReference Include="..\RestruantHost.Core\RestruantHost.Core.csproj" />
+    <ProjectReference Include="..\RestrauntHost.Support\RestaurantHost.Support.csproj" />
+    <ProjectReference Include="..\RestruantHost.Core\RestaurantHost.Core.csproj" />
   </ItemGroup>
 
 </Project>

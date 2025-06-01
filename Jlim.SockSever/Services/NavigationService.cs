@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestruantHost.Main.Services
+namespace RestaurantHost.Main.Services
 {
     internal class NavigationService
     {

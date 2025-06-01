@@ -1,15 +1,15 @@
-﻿using RestrauntHost.Main.Interfaces;
-using RestrauntHost.Main.Services;
-using RestrauntHost.Main.ViewModels;
-using RestrauntHost.Main.Views;
+﻿using RestaurantHost.Main.Interfaces;
+using RestaurantHost.Main.Services;
+using RestaurantHost.Main.ViewModels;
+using RestaurantHost.Main.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using System.Data;
 using System.Windows;
-using RestruantHost.Main.Views;
-using RestruantHost.Main.ViewModels;
+using RestaurantHost.Main.Views;
+using RestaurantHost.Main.ViewModels;
 
-namespace RestrauntHost.Main
+namespace RestaurantHost.Main
 {
     /// <summary>
     /// Interaction logic for App.xaml

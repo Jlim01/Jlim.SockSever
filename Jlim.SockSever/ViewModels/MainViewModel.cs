@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using RestrauntHost.Main.Interfaces;
+using RestaurantHost.Main.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,9 +10,9 @@ using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows;
 using CommunityToolkit.Mvvm.Messaging;
-using RestruantHost.Main.Services.MessengerService;
+using RestaurantHost.Main.Services.MessengerService;
 
-namespace RestrauntHost.Main.ViewModels
+namespace RestaurantHost.Main.ViewModels
 {
     public partial class MainViewModel :ObservableObject, IMainViewModel
     {

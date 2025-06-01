@@ -1,7 +1,7 @@
 ﻿using MahApps.Metro.Controls;
-using RestrauntHost.Main.Interfaces;
+using RestaurantHost.Main.Interfaces;
 
-namespace RestrauntHost.Main.Views
+namespace RestaurantHost.Main.Views
 {
     /// <summary>
     /// Interaction logic for MainPage.xaml

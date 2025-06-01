@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestruantHost.Core.Exceptions
+namespace RestaurantHost.Core.Exceptions
 {
     internal class DomainException
     {
