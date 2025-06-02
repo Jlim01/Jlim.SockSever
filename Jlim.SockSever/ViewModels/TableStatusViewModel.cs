@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.Messaging;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using RestaurantHost.Main.Services.MessengerService;
 using System;
 using System.Collections.Generic;
@@ -9,9 +11,20 @@ using System.Windows;
 
 namespace RestaurantHost.Main.ViewModels
 {
-    class TableStatusViewModel
+    public partial class TableStatusViewModel : ObservableObject
     {
-
+        private int _rowCnt;
+        private int _colCnt;
+        public int RowCnt
+        {
+            get => _rowCnt;
+            set => _rowCnt = value;
+        }
+        public int ColCnt
+        {
+            get => _colCnt;
+            set => _colCnt = value;
+        }
         private void RegisterMessage()
         {
             WeakReferenceMessenger.Default.Register<TableStatusViewModel, MenuChangeMsg>(this, (r, m) => OnChangeMenu(m));
@@ -20,6 +33,11 @@ namespace RestaurantHost.Main.ViewModels
         private void OnChangeMenu(MenuChangeMsg m)
         {
 
+        }
+        [RelayCommand]
+        private void RegisterCntBtn()
+        {
+            int T = 0;
         }
     }
 }

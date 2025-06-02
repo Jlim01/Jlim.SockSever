@@ -18,10 +18,14 @@ namespace RestaurantHost.Main.ViewModels
     {
         private readonly ILogger<MainViewModel> _logger;
         private readonly IUserService _userService;
+        public TableStatusViewModel TableStatusViewModel { get; }
+        public PaymentHistoryViewModel PaymentHistoryViewModel { get; }
 
         public Dictionary<string, bool> MenuChecked { get; set; } = new();
-        public MainViewModel(ILogger<MainViewModel> logger, IUserService userService)
+        public MainViewModel(TableStatusViewModel tableStatusVM, PaymentHistoryViewModel paymentHistoryVM, ILogger<MainViewModel> logger, IUserService userService)
         {
+            TableStatusViewModel = tableStatusVM;
+            PaymentHistoryViewModel = paymentHistoryVM;
             _logger = logger;
             _userService = userService;
 

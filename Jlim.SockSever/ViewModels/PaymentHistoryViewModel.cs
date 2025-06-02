@@ -1,4 +1,6 @@
-﻿using CommunityToolkit.Mvvm.Messaging;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using RestaurantHost.Main.Services.MessengerService;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Windows;
 
 namespace RestaurantHost.Main.ViewModels
 {
-    class PaymentHistoryViewModel
+    public partial class PaymentHistoryViewModel : ObservableObject
     {
         public PaymentHistoryViewModel()
         {
@@ -23,6 +25,12 @@ namespace RestaurantHost.Main.ViewModels
         private void OnChangeMenu(MenuChangeMsg m)
         {
 
+        }
+
+        [RelayCommand]
+        public void TestBtn()
+        {
+            MessageBox.Show("test");
         }
     }
 }

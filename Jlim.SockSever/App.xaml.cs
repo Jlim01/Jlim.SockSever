@@ -28,9 +28,9 @@ namespace RestaurantHost.Main
 
             var mainWindow = _serviceProvider.GetRequiredService<MainPage>();
             _serviceProvider.GetRequiredService<PaymentHistoryView>();
-            _serviceProvider.GetService<PaymentHistoryViewModel>();
-            _serviceProvider.GetService<TableStatusView>();
-            _serviceProvider.GetService<TableStatusViewModel>();
+            _serviceProvider.GetRequiredService<PaymentHistoryViewModel>();
+            _serviceProvider.GetRequiredService<TableStatusView>();
+            _serviceProvider.GetRequiredService<TableStatusViewModel>();
 
             mainWindow.Show();
 
