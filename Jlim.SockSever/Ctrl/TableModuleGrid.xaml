@@ -8,9 +8,10 @@
              d:DesignHeight="200" d:DesignWidth="400">
     <Grid x:Name="TableGrid" Background="White">
         <Rectangle Stroke="#FFE1E1E1"/>
-        <Grid x:Name="gridBodyBackboard" Margin="50" Background="#FFE1E1E1">
+        <Grid x:Name="gridBodyBackboard" Margin="5" Background="#FFE1E1E1">
             <Grid x:Name="gridBody" Margin="1 1 0 0"/>
         </Grid>
+        
         <Grid x:Name="quickTip" Style="{StaticResource Shadow}"
               HorizontalAlignment="Left"
               Width="74" Height="31" 

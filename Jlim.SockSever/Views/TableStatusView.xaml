@@ -7,7 +7,7 @@
              xmlns:ctrl="clr-namespace:RestruantHost.Main.Ctrl"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid x:Name="testTableStatus">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
             <RowDefinition Height="8*"/>
@@ -27,15 +27,34 @@
 
                 <Label Content="행" Background="Yellow"/>
                 <TextBox Grid.Column="1"
-                         Text="{Binding RowCnt}"/>
+                         Text="{Binding RowCnt}"
+                         TextChanged="TextRowChanged"/>
 
                 <Label Content="열" Background="AliceBlue" Grid.Row ="1"/>
                 <TextBox Grid.Row="1" Grid.Column="1"
-                         Text="{Binding ColCnt}"/>
+                         Text="{Binding ColCnt}"
+                         TextChanged="TextColChanged"/>
                 <Button Content="등록" Grid.Column="2" Grid.RowSpan="2"
                         Command="{Binding RegisterCntBtnCommand}"/>
             </Grid>
         </Border>
-        <ctrl:TableModuleGrid Grid.Row="1"/>
+
+        <Border Grid.Row="1">
+            <Grid x:Name="modulesGrid">
+                <!--<Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ctrl:TableModuleGrid Grid.Row="0"/>
+                <ctrl:TableModuleGrid Grid.Row="1" Grid.Column="1"/>-->
+            </Grid>
+        </Border>
+
+
+
     </Grid>
 </UserControl>
