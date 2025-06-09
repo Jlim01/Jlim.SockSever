@@ -8,6 +8,7 @@ using System.Data;
 using System.Windows;
 using RestaurantHost.Main.Views;
 using RestaurantHost.Main.ViewModels;
+using System;
 
 namespace RestaurantHost.Main
 {
@@ -15,6 +16,10 @@ namespace RestaurantHost.Main
     /// Interaction logic for App.xaml
     /// ConfigureService에 의존성 주입을 위한 서비스/뷰/뷰모델 등록
     /// </summary>
+    /// 
+    /*
+     * https://mahapps.com/docs/controls/HamburgerMenu  메뉴 네비게이션 만들때 이거 사용하기.
+     */
     public partial class App : Application
     {
         private IServiceProvider _serviceProvider;
@@ -23,9 +28,7 @@ namespace RestaurantHost.Main
         {
             var serviceCollection = new ServiceCollection();
             ConfigureService(serviceCollection);
-
-            _serviceProvider = serviceCollection.BuildServiceProvider();
-
+            _serviceProvider  = serviceCollection.BuildServiceProvider();
             var mainWindow = _serviceProvider.GetRequiredService<MainPage>();
             _serviceProvider.GetRequiredService<PaymentHistoryView>();
             _serviceProvider.GetRequiredService<PaymentHistoryViewModel>();
@@ -37,7 +40,7 @@ namespace RestaurantHost.Main
 
         }
 
-        private IServiceProvider ConfigureService(IServiceCollection services)
+        private void ConfigureService(IServiceCollection services)
         {
             // Configure Logging
             //TODO: https://learn.microsoft.com/ko-kr/dotnet/core/extensions/logging?tabs=command-line  로그 파일 구분 환경 구축
@@ -56,8 +59,6 @@ namespace RestaurantHost.Main
             services.AddSingleton<TableStatusView>();
             services.AddSingleton<PaymentHistoryView>();
 
-
-            return services.BuildServiceProvider();
         }
 
         private void OnExit(object sender, ExitEventArgs e)
