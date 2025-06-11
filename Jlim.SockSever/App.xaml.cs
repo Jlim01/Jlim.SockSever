@@ -9,6 +9,8 @@ using System.Windows;
 using RestaurantHost.Main.Views;
 using RestaurantHost.Main.ViewModels;
 using System;
+using RestaurantHost.Support.Helpers;
+using RestaurantHost.Support.Interfaces;
 
 namespace RestaurantHost.Main
 {
@@ -59,6 +61,8 @@ namespace RestaurantHost.Main
             services.AddSingleton<TableStatusView>();
             services.AddSingleton<PaymentHistoryView>();
 
+            //Support
+            services.AddSingleton<ICommXmlProtocolService, CommXmlProtocolService>();
         }
 
         private void OnExit(object sender, ExitEventArgs e)

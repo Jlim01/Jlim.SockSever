@@ -11,16 +11,16 @@ namespace RestaurantHost.Main.Services
 {
     public class UserService : IUserService
     {
-        private readonly ILogger<UserService> _logger;
+        private readonly ILogger<UserService> Logger;
         public UserService(ILogger<UserService> logger)
         {
-            _logger = logger;
+            Logger = logger;
         }
         public async Task SaveUserDataAsync()
         {
-            _logger.LogInformation("Starting to save user data");
+            Logger.LogInformation("Starting to save user data");
             await Task.Delay(1000);
-            _logger.LogInformation("User data saved successfully");
+            Logger.LogInformation("User data saved successfully");
         }
     }
 }

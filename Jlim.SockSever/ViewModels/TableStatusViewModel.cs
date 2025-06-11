@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using RestaurantHost.Main.Services.MessengerService;
+using RestaurantHost.Support.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,13 @@ namespace RestaurantHost.Main.ViewModels
             get => _colCnt;
             set => _colCnt = value;
         }
-        private void RegisterMessage()
+        private ICommXmlProtocolService XmlService;
+        public TableStatusViewModel(ICommXmlProtocolService xmlService)
         {
+            XmlService = xmlService;
+        }
+        private void RegisterMessage()
+        { 
             WeakReferenceMessenger.Default.Register<TableStatusViewModel, MenuChangeMsg>(this, (r, m) => OnChangeMenu(m));
         }
 

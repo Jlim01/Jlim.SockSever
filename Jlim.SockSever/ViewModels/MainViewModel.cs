@@ -11,23 +11,31 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows;
 using CommunityToolkit.Mvvm.Messaging;
 using RestaurantHost.Main.Services.MessengerService;
+using RestaurantHost.Support.Interfaces;
+using System.Xaml;
 
 namespace RestaurantHost.Main.ViewModels
 {
     public partial class MainViewModel :ObservableObject, IMainViewModel
     {
-        private readonly ILogger<MainViewModel> _logger;
-        private readonly IUserService _userService;
+        private readonly ILogger<MainViewModel> Logger;
+        private readonly IUserService UserService;
+        private ICommXmlProtocolService XmlService;
         public TableStatusViewModel TableStatusViewModel { get; }
         public PaymentHistoryViewModel PaymentHistoryViewModel { get; }
 
         public Dictionary<string, bool> MenuChecked { get; set; } = new();
-        public MainViewModel(TableStatusViewModel tableStatusVM, PaymentHistoryViewModel paymentHistoryVM, ILogger<MainViewModel> logger, IUserService userService)
+        public MainViewModel(TableStatusViewModel tableStatusVM, 
+                             PaymentHistoryViewModel paymentHistoryVM, 
+                             ILogger<MainViewModel> logger,
+                             IUserService userService,
+                             ICommXmlProtocolService xmlService)
         {
             TableStatusViewModel = tableStatusVM;
             PaymentHistoryViewModel = paymentHistoryVM;
-            _logger = logger;
-            _userService = userService;
+            Logger = logger;
+            UserService = userService;
+            XmlService = xmlService;
 
             InitMenuChecked();
             RegisterMessage();
@@ -63,12 +71,12 @@ namespace RestaurantHost.Main.ViewModels
         {
             try
             {
-                _logger.LogInformation("Save command executed");
-                await _userService.SaveUserDataAsync();
+                Logger.LogInformation("Save command executed");
+                await UserService.SaveUserDataAsync();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error during save operation");
+                Logger.LogError(ex, "Error during save operation");
             }
         }
     }

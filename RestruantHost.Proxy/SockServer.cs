@@ -2,6 +2,7 @@
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Text;
+using System.Diagnostics;
 
 namespace RestaurantHost.Proxy
 {
@@ -15,9 +16,9 @@ namespace RestaurantHost.Proxy
             listener.Listen(10000);
 
 
-            Console.WriteLine("Waiting for client...");
+            Debug.WriteLine("Waiting for client...");
             Socket client = await listener.AcceptAsync();
-            Console.WriteLine("Client connected.");
+            Debug.WriteLine("Client connected.");
 
             var receiveTask = ReceiveLoopAsync(client);
             var sendTask = SendLoopAsync(client);
@@ -40,14 +41,13 @@ namespace RestaurantHost.Proxy
                 }
                 catch
                 {
-                    Console.WriteLine("Disconnected during receive.");
+                    Debug.WriteLine("Disconnected during receive.");
                     break;
                 }
-                Console.WriteLine();
                 string rcvData = Encoding.UTF8.GetString(buffer, 0, received);
 
 
-                Console.WriteLine(rcvData);
+                Debug.WriteLine(rcvData);
             }
         }
 
@@ -56,19 +56,8 @@ namespace RestaurantHost.Proxy
             while (true)
             {
 
-                Console.Write("SEND MSG_ID 입력 > ");
+                Debug.Write("SEND MSG_ID 입력 > ");
                 string input = Console.ReadLine();
-                Console.WriteLine();
-
-                if (input.ToUpper() == "CLR")
-                {
-                    Console.Clear();
-                    Console.WriteLine("Already Connected.");
-                    continue;
-                }
-
-
-
 
                 //Command 찾기
                 if (!commandDict.TryGetValue(input, out string xml))
