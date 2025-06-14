@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using RestaurantHost.Support.Interfaces.XmlProtocol;
 
-namespace RestaurantHost.Support.Helpers
+namespace RestaurantHost.Support.Services
 {
     public class CommXmlProtocolService : ICommXmlProtocolService
     {
         public CommXmlProtocolService()
         {
-            
+
         }
         public T Deserialize<T>(string xml)
         {

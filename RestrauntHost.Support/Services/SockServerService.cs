@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantHost.Support.Helpers
+namespace RestaurantHost.Support.Services
 {
     internal class SockServerService
     {
