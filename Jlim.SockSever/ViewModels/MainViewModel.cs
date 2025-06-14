@@ -11,8 +11,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.Windows;
 using CommunityToolkit.Mvvm.Messaging;
 using RestaurantHost.Main.Services.MessengerService;
-using RestaurantHost.Support.Interfaces;
 using System.Xaml;
+using RestaurantHost.Support.Interfaces.XmlProtocol;
 
 namespace RestaurantHost.Main.ViewModels
 {

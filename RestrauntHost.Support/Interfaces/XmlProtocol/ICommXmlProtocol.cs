@@ -1,4 +1,4 @@
-﻿namespace RestaurantHost.Support.Interfaces
+﻿namespace RestaurantHost.Support.Interfaces.XmlProtocol
 {
 
     public interface ICommXmlProtocolService

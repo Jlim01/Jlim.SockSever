@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using RestaurantHost.Main.Services.MessengerService;
-using RestaurantHost.Support.Interfaces;
+using RestaurantHost.Support.Interfaces.XmlProtocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;

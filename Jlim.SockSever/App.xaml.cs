@@ -10,7 +10,7 @@ using RestaurantHost.Main.Views;
 using RestaurantHost.Main.ViewModels;
 using System;
 using RestaurantHost.Support.Helpers;
-using RestaurantHost.Support.Interfaces;
+using RestaurantHost.Support.Interfaces.XmlProtocol;
 
 namespace RestaurantHost.Main
 {

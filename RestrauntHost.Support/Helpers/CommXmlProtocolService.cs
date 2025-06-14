@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RestaurantHost.Support.Interfaces;
+using RestaurantHost.Support.Interfaces.XmlProtocol;
 
 namespace RestaurantHost.Support.Helpers
 {
