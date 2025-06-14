@@ -1,41 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
+using RestaurantHost.Support.Helpers;
 using RestaurantHost.Support.Interfaces.XmlProtocol;
 
 namespace RestaurantHost.Support.Services
 {
     public class CommXmlProtocolService : ICommXmlProtocolService
     {
-        public CommXmlProtocolService()
-        {
-
-        }
         public T Deserialize<T>(string xml)
         {
-            throw new NotImplementedException();
-        }
-
-        public string FormatXml(string xml)
-        {
-            throw new NotImplementedException();
-        }
-
-        public T LoadFromFile<T>(string filePath)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveToFile<T>(T obj, string filePath)
-        {
-            throw new NotImplementedException();
+            var serializer = new XmlSerializer(typeof(T));
+            using var stringReader = new StringReader(xml);
+            return (T)serializer.Deserialize(stringReader);
         }
 
         public string Serialize<T>(T obj)
         {
-            throw new NotImplementedException();
+            var serializer = new XmlSerializer(typeof(T));
+            var settings = new XmlWriterSettings
+            {
+                Indent = true,
+                Encoding = Encoding.UTF8,
+                OmitXmlDeclaration = false
+            };
+
+            using var stringWriter = new StringWriter();
+            using var xmlWriter = XmlWriter.Create(stringWriter, settings);
+            serializer.Serialize(xmlWriter, obj);
+            return stringWriter.ToString();
+        }
+
+        public T LoadFromFile<T>(string filePath)
+        {
+            var xml = File.ReadAllText(filePath);
+            return Deserialize<T>(xml);
+        }
+
+        public void SaveToFile<T>(T obj, string filePath)
+        {
+            var xml = Serialize(obj);
+            File.WriteAllText(filePath, xml);
+        }
+        public string FormatXml(string xml)
+        {
+            return XmlFormatter.Format(xml);
         }
     }
 }
