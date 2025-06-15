@@ -20,16 +20,3 @@ namespace RestaurantHost.Support.Models.CommXmlProtocol
         public string Cmd { get; set; }
     }
 }
-
-
-/*
- [XmlRoot("Message")]
-public class XmlMessage<T> where T : CommonBodyBase
-{
-    [XmlElement("Header")]
-    public XmlHeader Header { get; set; }
-
-    [XmlElement("Body")]
-    public T Body { get; set; }
-} 
- */
