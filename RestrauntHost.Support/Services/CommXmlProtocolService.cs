@@ -23,13 +23,18 @@ namespace RestaurantHost.Support.Services
             var settings = new XmlWriterSettings
             {
                 Indent = true,
-                Encoding = Encoding.UTF8,
+                Encoding = new UTF8Encoding(false), // BOM 없이,
                 OmitXmlDeclaration = false
             };
 
+            var ns = new XmlSerializerNamespaces();
+            ns.Add(string.Empty, string.Empty); // 네임스페이스 제거
+
             using var stringWriter = new StringWriter();
             using var xmlWriter = XmlWriter.Create(stringWriter, settings);
-            serializer.Serialize(xmlWriter, obj);
+
+            //ns 인자 사용에 따른, <MESSAGE xmlns:xsd="http://www.w3.org/2001/XMLSchema"> 의 xmlns(네임스페이스) 삭제.
+            serializer.Serialize(xmlWriter, obj, ns); 
             return stringWriter.ToString();
         }
 

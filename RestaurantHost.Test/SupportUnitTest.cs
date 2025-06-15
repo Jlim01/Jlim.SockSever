@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.Utilities;
+using RestaurantHost.Infrastructure.Models.CommXmlProtocol;
+using RestaurantHost.Support.Models.CommXmlProtocol;
 using RestaurantHost.Support.Services;
 using Xunit.Abstractions;
 
@@ -37,7 +39,7 @@ namespace RestaurantHost.Test
         }
 
         [Fact]
-        public void Deserialize_Should_Recover_Object()
+        public void Deserialize_Should_Recover_Person()
         {
             var service = new CommXmlProtocolService();
             var xml = @"<?xml version=""1.0""?>
@@ -64,6 +66,46 @@ namespace RestaurantHost.Test
 
             Assert.Contains("\n", formatted); // 줄바꿈이 있는지 확인
             Assert.Contains("<item>value</item>", formatted);
+        }
+
+        [Fact]
+        public void Test_Should_Merge_XMLMsg()
+        {
+            var service = new CommXmlProtocolService();
+
+            var s8F1Data = new S8F1Data { };
+            var s8F1Msg = new XmlMessage<S8F1Data>
+            {
+                Header = new XmlHeader { TableName = "1", From = "Svr", To = "Cli", Cmd = "S8F1" },
+                Body = s8F1Data
+            };
+            string s8F1MsgXml = service.Serialize(s8F1Msg);
+
+            OutPut.WriteLine(s8F1MsgXml);
+            Assert.Contains("<DATA />", s8F1MsgXml);  // 내용 없으면 <DATA /> 이렇게 나온다. 빈문자열 " " 이라도 넣어야 <DATA> </DATA> 로 나옴
+
+            OutPut.WriteLine("");
+
+            var s2F2Data = new S2F2Data
+            {
+                FoodInfoList = new List<FoodInfoType1>
+                {
+                    new FoodInfoType1 { Food = "짜장면", Price = 5000 },
+                    new FoodInfoType1 { Food = "짬뽕", Price = 6000 }
+                }
+            };
+            var s2F2Msg = new XmlMessage<S2F2Data>
+            {
+                Header = new XmlHeader { TableName = "1", From="Svr", To= "Cli", Cmd = "S2F2"},
+                Body = s2F2Data
+            };
+
+            
+            string s2F2MsgXml = service.Serialize(s2F2Msg);
+
+            OutPut.WriteLine(s2F2MsgXml);
+            Assert.Contains("<FOOD>짜장면</FOOD>", s2F2MsgXml);
+            Assert.Contains("<PRICE>6000</PRICE>", s2F2MsgXml);
         }
     }
 }
