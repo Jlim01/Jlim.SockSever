@@ -21,6 +21,10 @@ namespace RestaurantHost.Main.ViewModels
         private readonly ILogger<MainViewModel> Logger;
         private readonly IUserService UserService;
         private ICommXmlProtocolService XmlService;
+        #region command
+        public ICommand ChangeMenuBtnCommand { get; set; }
+
+        #endregion
         public TableStatusViewModel TableStatusViewModel { get; }
         public PaymentHistoryViewModel PaymentHistoryViewModel { get; }
 
@@ -43,7 +47,7 @@ namespace RestaurantHost.Main.ViewModels
 
         private void RegisterMessage()
         {
-
+            ChangeMenuBtnCommand = new RelayCommand(ChangeMenuBtn);
         }
 
         private void InitMenuChecked()
@@ -53,7 +57,7 @@ namespace RestaurantHost.Main.ViewModels
             MenuChecked.Add("PaymentHistoryViewModel", false);
         }
 
-        [RelayCommand]
+
         private void ChangeMenuBtn()
         {
            foreach(KeyValuePair<string, bool> pair in MenuChecked)

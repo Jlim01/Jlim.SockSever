@@ -7,15 +7,41 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:rhMain="clr-namespace:RestaurantHost.Main"
+        xmlns:vm="clr-namespace:RestaurantHost.Main.ViewModels"
         mc:Ignorable="d"
         
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
         Title="MainPage" Height="550" Width="950">
+
+    <!--ViewModel 요소 F12키 추적 목적 vm, d-->
 
     <Grid>
         <DockPanel>
-            <Border Width="200" Background="PaleGreen" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Left">
-                <TextBlock Foreground="Black">Dock = "Left"</TextBlock>
-            </Border>
+            <Grid  Width="40">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="8*"/>
+                </Grid.RowDefinitions>
+                <ToggleButton Grid.Row="0"
+                              Width="30"
+                              VerticalAlignment="Top"
+                                x:Name="MenuToggleButton"
+                                AutomationProperties.Name="HamburgerToggleButton"
+                                IsChecked="False"
+                                Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+                <StackPanel Grid.Row="1">
+                    <Border>
+                        <Button Margin="2 10"></Button>
+                    </Border>
+                    <Border>
+                        <Button Margin="2 10"></Button>
+                    </Border>
+                    <Border>
+                        <Button Margin="2 10"></Button>
+                    </Border>
+                </StackPanel>
+            </Grid>
+            
             <Border Height="50" Background="SkyBlue" BorderBrush="Black" BorderThickness="1" DockPanel.Dock="Top">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -43,18 +69,19 @@
                 <TextBlock Foreground="Black">Dock = "Bottom"</TextBlock>
             </Border>
 
-            <Border Background="White" BorderBrush="Black" BorderThickness="1">  <!--가운데 dockPannel-->
+            <Border Background="White" BorderBrush="Black" BorderThickness="1">
+                <!--가운데 dockPannel-->
                 <Grid x:Name="GridView">
                     <!--View - ViewModel 연동 시 부모인 MainPage View 및 MainViewModel에서 연동 작업진행.-->
                     <local:TableStatusView 
                        DataContext="{Binding TableStatusViewModel}" 
                        Visibility="{Binding ElementName=TableStatusView, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                     
+
                     <local:PaymentHistoryView 
                        DataContext="{Binding PaymentHistoryViewModel}"
                        Visibility="{Binding ElementName=PaymentHistoryView, Path=IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 </Grid>
-                
+
             </Border>
         </DockPanel>
 
