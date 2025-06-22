@@ -6,9 +6,18 @@ using System.Diagnostics;
 
 namespace RestaurantHost.Proxy.SockProxy
 {
-    public class SockServer
+    //todo:
+    // 서버 환경 구축.
+    //xml 불러서 문자열 파싱 
+    // proxy 문자열 receive 역할
+    // service에게 이벤트로 message 넘겨주기  service는 받은 메시지 비즈니스 로직 처리. service가 send 역할도 함.
+    // 
+    public class SockServerProxy
     {
-
+        //public delegate void AsyncSockReceivedEventHandler(int moduleID, SockMessage message);
+        //public event AsyncSockReceivedEventHandler DataReceivedEventHandler;
+        //Action : 반환 값 없는 이벤트핸들러로 상기 내용을 한 줄로 만들 수 있다.
+        public event Action<int, SockMessage>? DataRecivedEventHandler;
         static async Task CreateSockAsyncServer()
         {
             Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);

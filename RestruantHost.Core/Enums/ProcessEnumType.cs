@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantHost.Core.Enums
 {
-    enum ProcessEnumType
+    public enum ProcessEnumType
     {
         Empty, Come_IN,Client_IN, Client_OUT, Menu_Ack, Order_Ack, Pay_Ack, Waiting_Time, Wait_Req
     }

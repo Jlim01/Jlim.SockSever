@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RestrauntHost.Support\RestaurantHost.Support.csproj" />
     <ProjectReference Include="..\RestruantHost.Core\RestaurantHost.Core.csproj" />
   </ItemGroup>
 

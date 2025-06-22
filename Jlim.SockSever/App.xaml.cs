@@ -11,6 +11,8 @@ using RestaurantHost.Main.ViewModels;
 using System;
 using RestaurantHost.Support.Interfaces.XmlProtocol;
 using RestaurantHost.Support.Services;
+using RestaurantHost.Proxy.SockProxy;
+using RestaurantHost.Core.Enums;
 
 namespace RestaurantHost.Main
 {
@@ -37,6 +39,9 @@ namespace RestaurantHost.Main
             _serviceProvider.GetRequiredService<TableStatusView>();
             _serviceProvider.GetRequiredService<TableStatusViewModel>();
 
+            //Services
+            _serviceProvider.GetRequiredService<TableManagerService>();
+            _serviceProvider.GetRequiredService<SockServerService>();
             mainWindow.Show();
 
 
@@ -50,6 +55,8 @@ namespace RestaurantHost.Main
 
             // Register Services
             services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<TableManagerService>();
+            services.AddSingleton<TableStatusService>();
 
             // Register ViewModels
             services.AddSingleton<IMainViewModel, MainViewModel>();
@@ -61,8 +68,16 @@ namespace RestaurantHost.Main
             services.AddSingleton<TableStatusView>();
             services.AddSingleton<PaymentHistoryView>();
 
+            //Proxy
+            services.AddSingleton<SockServerProxy>();
+
             //Support
             services.AddSingleton<ICommXmlProtocolService, CommXmlProtocolService>();
+            services.AddSingleton<SockServerService>(provider =>
+            {
+                var proxy = provider.GetRequiredService<SockServerProxy>();
+                return new SockServerService(proxy, SocketEnumType.Server);
+            });  //enum은 di 주입이 안됨에 따른 Factory 패턴을 통해 GetRequiredService() 발생 시 내부로 들어와 enum값 넘김. 
         }
 
         private void OnExit(object sender, ExitEventArgs e)
