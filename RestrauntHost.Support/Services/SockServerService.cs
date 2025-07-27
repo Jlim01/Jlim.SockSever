@@ -19,6 +19,9 @@ namespace RestaurantHost.Support.Services
                 case SocketEnumType.Server:
                     SockServerProxy = sockServerProxy;
                     SockServerProxy.DataRecivedEventHandler += OnClientReceivedEvent;
+                    sockServerProxy.test();
+          
+                    
                     break;
                 case SocketEnumType.Client:
                     break;
@@ -29,13 +32,14 @@ namespace RestaurantHost.Support.Services
             }
         }
 
-        private void OnClientReceivedEvent(int arg1, SockMessage message)
+        private void OnClientReceivedEvent(int arg, SockMessage message)
         {
             try
             {
                 switch (message.TransactionName)
                 {
                     case "Accepted":
+                        SendMessage(new SockMessage(message.TableNo, "S1F1")); // sample 
                         break;
                     case "Disconnected":
                         break;
@@ -46,6 +50,17 @@ namespace RestaurantHost.Support.Services
             catch (Exception ex)
             {
 
+            }
+        }
+        public void SendMessage(SockMessage message)
+        {
+            if (SockServerProxy != null)
+            {
+                SockServerProxy.SendMessage(message);
+            }
+            else
+            {
+                throw new InvalidOperationException("SockServerProxy is not initialized.");
             }
         }
     }
