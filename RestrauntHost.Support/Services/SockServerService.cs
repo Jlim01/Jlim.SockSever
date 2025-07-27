@@ -2,6 +2,7 @@
 using RestaurantHost.Proxy.SockProxy;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -12,6 +13,7 @@ namespace RestaurantHost.Support.Services
     public class SockServerService
     {
         private SockServerProxy SockServerProxy;
+
         public SockServerService(SockServerProxy sockServerProxy, SocketEnumType sockType)
         {
             switch (sockType)
@@ -31,7 +33,7 @@ namespace RestaurantHost.Support.Services
 
             }
         }
-
+        
         private void OnClientReceivedEvent(int arg, SockMessage message)
         {
             try
@@ -39,7 +41,7 @@ namespace RestaurantHost.Support.Services
                 switch (message.TransactionName)
                 {
                     case "Accepted":
-                        SendMessage(new SockMessage(message.TableNo, "S1F1")); // sample 
+                        SendMessage(new SockMessage(1, "S1F1"); // sample 
                         break;
                     case "Disconnected":
                         break;
