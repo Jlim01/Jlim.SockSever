@@ -54,6 +54,9 @@ namespace RestaurantHost.Proxy.SockProxy
                     break;
                 }
                 string rcvData = Encoding.UTF8.GetString(buffer, 0, received);
+                //헤더 구분 하기.
+                //메시지 Service로 이관
+
 
 
                 Debug.WriteLine(rcvData);

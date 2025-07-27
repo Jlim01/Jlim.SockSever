@@ -53,11 +53,11 @@ namespace RestaurantHost.Main
             //TODO: https://learn.microsoft.com/ko-kr/dotnet/core/extensions/logging?tabs=command-line  로그 파일 구분 환경 구축
             services.AddLogging();
 
-            // Register Services
+            //Register Services
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<TableManagerService>();
             services.AddSingleton<TableStatusService>();
-
+            
             // Register ViewModels
             services.AddSingleton<IMainViewModel, MainViewModel>();
             services.AddSingleton<TableStatusViewModel>();
@@ -68,6 +68,12 @@ namespace RestaurantHost.Main
             services.AddSingleton<TableStatusView>();
             services.AddSingleton<PaymentHistoryView>();
 
+            //todo 250725 jlim
+            //Main에서 참조하지 않는 Proxy를 직접 불러오니 구조 위배
+            //https://junworld.tistory.com/manage/newpost/1636?type=post&returnURL=ENTRY
+            //참고해서 support에 service 등록 레이어만들자. 해당 레이어에서는 proxy도 di등록함.
+            //그리고 해당 service 등록 레이어 클래스를 Main에 불러오자.
+            //그럼 main에서는 proxy 존재를 모른다.
             //Proxy
             services.AddSingleton<SockServerProxy>();
 
