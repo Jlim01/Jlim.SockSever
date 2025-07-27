@@ -33,14 +33,45 @@ namespace RestaurantHost.Support.Services
         {
             try
             {
-                switch (message.TransactionName)
+                if (Enum.TryParse<FromCliCmd>(message.TransactionName, out var cmd))
                 {
-                    case "Accepted":
-                        break;
-                    case "Disconnected":
-                        break;
-                    case "S1F1":
-                        break;
+                    switch (cmd)
+                    {
+                        case FromCliCmd.S1F1:
+                            // 처리
+                            break;
+                        case FromCliCmd.S2F1:
+                            // 처리
+                            break;
+                        case FromCliCmd.S3F1C100:
+                            break;
+                        case FromCliCmd.S3F1C101:
+                            break;
+                        case FromCliCmd.S4F1:
+                            break;
+                        case FromCliCmd.S5F2:
+                            break;
+                        case FromCliCmd.S6F1:
+                            break;
+                        case FromCliCmd.S7F2:
+                            break;
+                        case FromCliCmd.S8F1:
+                            break;
+                        default:
+                            // 처리 안 되는 경우
+                            break;
+                    }
+                }
+                else
+                {
+                    // enum에 해당하지 않는 "Accepted", "Disconnected" 같은 것 처리
+                    switch (message.TransactionName)
+                    {
+                        case "Accepted":
+                            break;
+                        case "Disconnected":
+                            break;
+                    }
                 }
             }
             catch (Exception ex)
