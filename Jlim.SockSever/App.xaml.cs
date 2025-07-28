@@ -20,10 +20,10 @@ namespace RestaurantHost.Main
             var services = new ServiceCollection();
             RegistDIContainer(services);
 
-            // 5. 서비스 제공자 생성
+            //서비스 제공자 생성
             _serviceProvider = services.BuildServiceProvider();
 
-            // 6. 진입점(MainPage) 생성 및 표시
+            //생성자 호출
             var mainWindow = _serviceProvider.GetRequiredService<MainPage>();
             _serviceProvider.GetRequiredService<SockServerProxy>();
 

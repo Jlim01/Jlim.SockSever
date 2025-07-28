@@ -1,7 +1,6 @@
 ﻿using RestaurantHost.Core.Enums;
 using RestaurantHost.Core.Interfaces;
 using RestaurantHost.Core.Models;
-using System.Diagnostics;
 namespace RestaurantHost.Support.Services
 {
     public class SockServerService : ISocketMessageHandler

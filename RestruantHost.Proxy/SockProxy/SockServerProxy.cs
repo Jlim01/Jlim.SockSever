@@ -95,6 +95,7 @@ namespace RestaurantHost.Proxy.SockProxy
                         //받는 부분이나, send도 마찬가지. xml로 serialzie 후 보낼 때 정합성 체크한 후 보내기 (정합성체크 와 보내는건 proxy 담당)
                         
                         var message = new SockMessage(clientId); // message를 파싱해야함.
+
                         OnDataReceived(clientId, message);
                     }
                     else

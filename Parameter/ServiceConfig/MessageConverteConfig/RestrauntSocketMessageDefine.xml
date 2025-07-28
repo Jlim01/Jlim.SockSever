@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SocketMessageList>
+  <BlockList ModuleNo="0">
+    <Block Name="HEADER">
+      <BlockItem Name="LINE_TABLE"/>
+      <BlockItem Name="FROM"/>
+      <BlockItem Name="TO"/>
+      <BlockItem Name="COMMAND"/>
+    </Block>
+	
+    <Block Name="S1F1">
+    </Block>
+
+    <Block Name="S2F1">
+    </Block>
+
+    <Block Name="S2F2">
+      <BlockItem Name="FOOD_INFO_LIST">
+        <BlockItem Name="FOOD_INFO">
+          <BlockItem Name="FOOD"/>
+          <BlockItem Name="PRICE"/>
+        </BlockItem>
+      </BlockItem>
+    </Block>
+
+  
+    <Block Name="S3F1C100">
+      <BlockItem Name="CEID"/>
+      <BlockItem Name="FOOD_INFO_LIST">
+        <BlockItem Name="FOOD_INFO">
+          <BlockItem Name="FOOD"/>
+          <BlockItem Name="COUNT"/>
+        </BlockItem>
+      </BlockItem>
+    </Block>
+
+    <Block Name="S3F1C101">
+      <BlockItem Name="CEID"/>
+      <BlockItem Name="MONEY"/>
+    </Block>
+
+    <Block Name="S3F2">
+    </Block>
+
+    <Block Name="S4F1">
+    </Block>
+
+    <Block Name="S4F2">
+      <BlockItem Name="REMAIN_TIME"/>
+    </Block>
+
+    <Block Name="S5F1">
+    </Block>
+    
+    <Block Name="S5F2">
+      <BlockItem Name="ACK"/>
+    </Block>
+
+    <Block Name="S6F1">
+    </Block>
+	
+	<Block Name="S7F1">
+    </Block>
+	
+	<Block Name="S7F2">
+      <BlockItem Name="ACK"/>
+    </Block>
+	
+	<Block Name="S8F1">
+    </Block>
+  </BlockList>
+
+  <TransactionList ModuleNo="0">
+
+    <Transaction Name="S1F1">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S1F1"        ItemName="DATA" />
+    </Transaction>
+    
+    <Transaction Name="S2F1">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S2F1"        ItemName="DATA" />
+    </Transaction>
+    
+    <Transaction Name="S2F2">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S2F2"        ItemName="DATA" />
+    </Transaction>
+
+    <Transaction Name="S3F1C100">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S3F1C100"        ItemName="DATA" />
+    </Transaction>
+
+    <Transaction Name="S3F1C101">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S3F1C101"       ItemName="DATA" />
+    </Transaction>
+
+    <Transaction Name="S3F2">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S3F2"       ItemName="DATA" />
+    </Transaction>
+
+    <Transaction Name="S4F1">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S4F1"       ItemName="DATA" />
+    </Transaction>
+
+    <Transaction Name="S4F2">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S4F2"       ItemName="DATA" />
+    </Transaction>
+
+    <Transaction Name="S5F1">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S5F1"      ItemName="DATA" />
+    </Transaction>
+
+
+    <Transaction Name="S5F2">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S5F2"        ItemName="DATA" />
+    </Transaction>
+
+    <Transaction Name="S6F1">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S6F1"   ItemName="DATA" />
+    </Transaction>
+
+    <Transaction Name="S7F1">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S7F1"   ItemName="DATA" />
+    </Transaction>
+
+    <Transaction Name="S7F2">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S7F2"   ItemName="DATA" />
+    </Transaction>
+
+    <Transaction Name="S8F1">
+      <TransactionItem Name="HEADER"      ItemName="HEADER" />
+      <TransactionItem Name="S8F1"   ItemName="DATA" />
+    </Transaction>
+
+  </TransactionList>
+
+
+
+  <TransactionMappingList ModuleNo="0">
+    <TransactionMapping MappingTransactionName="S1F1"                       EventName="S1F1"               />
+    <TransactionMapping MappingTransactionName="S2F1"                       EventName="S2F1"               />
+    <TransactionMapping MappingTransactionName="S2F2"                       EventName="S2F2"               />
+    <TransactionMapping MappingTransactionName="S3F1C100"                  EventName="S3F1"    Ceid="100"/>
+    <TransactionMapping MappingTransactionName="S3F1C101"                  EventName="S3F1"    Ceid="101"/>
+    <TransactionMapping MappingTransactionName="S3F2"                      EventName="S3F2"              />
+    <TransactionMapping MappingTransactionName="S4F1"                      EventName="S4F1"              />
+    <TransactionMapping MappingTransactionName="S5F1"                      EventName="S5F1"              />
+    <TransactionMapping MappingTransactionName="S5F2"                      EventName="S5F2"              />
+	 <TransactionMapping MappingTransactionName="S6F1"                      EventName="S6F1"              />
+    <TransactionMapping MappingTransactionName="S7F1"                      EventName="S7F1"              />
+    <TransactionMapping MappingTransactionName="S7F2"                      EventName="S7F2"              />
+	 <TransactionMapping MappingTransactionName="S8F1"                      EventName="S8F1"              />
+  </TransactionMappingList>
+
+
+  <TransactionEventRule ModuleNo="0" EventNameStartByteIndex="35" EventNameType="string" MessageSizeByteIndex="0" MessageSizeType="uint" SocketType="MES"/>
+
+
+</SocketMessageList>
+
+
+
