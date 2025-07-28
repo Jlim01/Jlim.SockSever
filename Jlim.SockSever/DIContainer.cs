@@ -39,11 +39,15 @@ namespace RestaurantHost.Main
         {
             // SockServerService는 ISocketMessageHandler로도 쓰이므로 여기서 단일 인스턴스로 등록
             var sockServerService = new SockServerService(SocketEnumType.Server); // 이거 이렇게 직접 new해서 조립하지말고 Support에서 조립하는게 좋다함.
-
-            // SockServerService와 ISocketMessageHandler 모두로 등록
-            services.AddSingleton(sockServerService);
             services.AddSingleton<ISocketMessageHandler>(sockServerService);
-
+            services.AddSingleton<ISocketSenderMessageHandler>(sockServerService);
+            services.AddSingleton<SockServerService>(provider =>
+            {
+                
+                var handler = provider.GetRequiredService<ISocketSenderMessageHandler>();
+                sockServerService.SetHandler(handler);
+                return sockServerService;
+            });
             // 기타 Support 서비스
             services.AddSingleton<ICommXmlProtocolService, CommXmlProtocolService>();
 

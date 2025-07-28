@@ -1,11 +1,13 @@
 ﻿using RestaurantHost.Core.Enums;
 using RestaurantHost.Core.Interfaces;
 using RestaurantHost.Core.Models;
+using System.Diagnostics;
 namespace RestaurantHost.Support.Services
 {
-    public class SockServerService : ISocketMessageHandler
+    public class SockServerService : ISocketSenderMessageHandler, ISocketMessageHandler
     {
         private readonly SocketEnumType _sockType;
+        private ISocketSenderMessageHandler? _handler;
         public SockServerService(SocketEnumType sockType)
         {
             _sockType = sockType;
@@ -16,6 +18,7 @@ namespace RestaurantHost.Support.Services
         {
             try
             {
+                OnMessageSend(clientId, message);
                 if (_sockType == SocketEnumType.Client)
                 {
 
@@ -70,5 +73,15 @@ namespace RestaurantHost.Support.Services
             }
         }
 
+        public void OnMessageSend(int clientId, SockMessage message)
+        {
+            _handler?.OnMessageSend(clientId, message);
+
+        }
+        public void SetHandler(ISocketSenderMessageHandler handler)
+        {
+            _handler = handler;
+            Debug.WriteLine($"[SUPPORT.Service] Handler 세팅 완료: {_handler?.GetType().Name}");
+        }
     }
 }

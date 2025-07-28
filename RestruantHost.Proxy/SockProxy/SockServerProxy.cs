@@ -64,6 +64,12 @@ namespace RestaurantHost.Proxy.SockProxy
             _handler?.OnMessageReceived(clientId, message);
         }
 
+        public void OnDataSend(int clientId, SockMessage message)
+        {
+            Debug.WriteLine("[PROXY] OnDataSend 호출됨");
+ 
+        }
+
 
         private async Task ReceiveLoopAsync(int clientId, Socket client)
         {

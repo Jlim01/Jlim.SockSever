@@ -24,9 +24,9 @@ namespace RestaurantHost.Main
             _serviceProvider = services.BuildServiceProvider();
 
             //생성자 호출
+            _ = _serviceProvider.GetRequiredService<SockServerProxy>();
+            _ = _serviceProvider.GetRequiredService<SockServerService>();
             var mainWindow = _serviceProvider.GetRequiredService<MainPage>();
-            _serviceProvider.GetRequiredService<SockServerProxy>();
-
             mainWindow.Show();
         }
 
