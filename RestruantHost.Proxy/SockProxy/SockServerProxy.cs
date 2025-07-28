@@ -1,38 +1,40 @@
-﻿using System.Net.Sockets;
-using System.Net;
-using System.Text.RegularExpressions;
-using System.Text;
-using System.Diagnostics;
+﻿using RestaurantHost.Core.Interfaces;
+using RestaurantHost.Core.Models;
 using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
+using System.Reflection.PortableExecutable;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace RestaurantHost.Proxy.SockProxy
 {
     public class SockServerProxy
     {
-        public event Action<int, SockMessage>? DataRecivedEventHandler;
-
         private Socket? _listener;
         private readonly ConcurrentDictionary<int, Socket> _clients = new();
         private int _nextClientId = 0;
+        private int portNumber;
+        private bool ListenRunning = true;
+        private ISocketMessageHandler? _handler;
 
         public SockServerProxy()
         {
+            portNumber = 11000; // 기본 포트 번호. 필요시 configure로 변경 가능.
+
             _ = CreateSockAsyncServer(); // fire-and-forget
 
             //포트번호 configure로 불러올수있음.
             //cancellation token 취소 시간 또한 configure 설정 가능
         }
-        public void test()
-        {
-            DataRecivedEventHandler.Invoke(0, new SockMessage(1, "S1F1")); // sample test
-        }
         private async Task CreateSockAsyncServer()
         {
             _listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _listener.Bind(new IPEndPoint(IPAddress.Any, 11000));
+            _listener.Bind(new IPEndPoint(IPAddress.Any, portNumber));
             _listener.Listen(10000);
 
-            while (true)
+            while (ListenRunning)
             {
                 try
                 {
@@ -49,6 +51,19 @@ namespace RestaurantHost.Proxy.SockProxy
                 }
             }
         }
+        public void SetHandler(ISocketMessageHandler handler)
+        {
+            _handler = handler;
+            Debug.WriteLine($"[PROXY] Handler 세팅 완료: {_handler?.GetType().Name}");
+        }
+
+        // 호출되는 위치
+        private void OnDataReceived(int clientId, SockMessage message)
+        {
+            Debug.WriteLine("[PROXY] OnDataReceived 호출됨");
+            _handler?.OnMessageReceived(clientId, message);
+        }
+
 
         private async Task ReceiveLoopAsync(int clientId, Socket client)
         {
@@ -69,18 +84,18 @@ namespace RestaurantHost.Proxy.SockProxy
 
                     var headerMatch = Regex.Match(rcvData, @"<HEADER>(.*?)</HEADER>");
                     var bodyMatch = Regex.Match(rcvData, @"<DATA>(.*?)</DATA>");
-
+                    Debug.WriteLine($"[PROXY] 수신된 HEADER: {headerMatch}, BODY: {bodyMatch}");
                     if (headerMatch.Success && bodyMatch.Success)
                     {
-                        string command = headerMatch.Groups[1].Value;
+                        string header = headerMatch.Groups[1].Value;
                         string body = bodyMatch.Groups[1].Value;
                         //todo : 메시지 정합성 체크. xml 파일 비교.
                         //받은 xml deserialize 후 메시지 문자열 파싱하여 body를 dictionary 또는 리스트에 저장해서 service로 보내기 (데이터 정제)
 
                         //받는 부분이나, send도 마찬가지. xml로 serialzie 후 보낼 때 정합성 체크한 후 보내기 (정합성체크 와 보내는건 proxy 담당)
                         
-                        var message = new SockMessage(clientId, command, body);
-                        DataRecivedEventHandler?.Invoke(clientId, message);
+                        var message = new SockMessage(clientId); // message를 파싱해야함.
+                        OnDataReceived(clientId, message);
                     }
                     else
                     {
@@ -113,7 +128,7 @@ namespace RestaurantHost.Proxy.SockProxy
 
         public void SendMessage(SockMessage message)
         {
-            if (_clients.TryGetValue(message.TableNo, out var client))
+            if (_clients.TryGetValue(message.ModuleNo, out var client))
             {
                 try
                 {
@@ -126,11 +141,5 @@ namespace RestaurantHost.Proxy.SockProxy
                 }
             }
         }
-
-        public void Test()
-        {
-            DataRecivedEventHandler?.Invoke(1, new SockMessage(1, "Test"));
-        }
     }
 }
-``
