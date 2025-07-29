@@ -24,4 +24,15 @@
     <ProjectReference Include="..\RestruantHost.Proxy\RestaurantHost.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Icons\" />
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Resources\Styles\Controls\Themes\Composite\" />
+    <Folder Include="Resources\Styles\Controls\Themes\Graphs\" />
+    <Folder Include="Resources\Styles\Controls\Themes\Units\" />
+    <Folder Include="Resources\Styles\Controls\UI\Composite\" />
+    <Folder Include="Resources\Styles\Controls\UI\Graphs\" />
+    <Folder Include="Resources\Styles\Controls\UI\Units\" />
+  </ItemGroup>
+
 </Project>
