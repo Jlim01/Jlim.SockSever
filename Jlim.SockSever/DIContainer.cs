@@ -37,17 +37,8 @@ namespace RestaurantHost.Main
 
         public static IServiceCollection AddSupportLayer(this IServiceCollection services)
         {
-            // SockServerService는 ISocketReceiveMessageHandler로도 쓰이므로 여기서 단일 인스턴스로 등록
-            var sockServerService = new SockServerService(SocketEnumType.Server); // 이거 이렇게 직접 new해서 조립하지말고 Support에서 조립하는게 좋다함.
-            services.AddSingleton<ISocketReceiveMessageHandler>(sockServerService);
-            services.AddSingleton<ISocketSenderMessageHandler>(sockServerService);
-            services.AddSingleton<SockServerService>(provider =>
-            {
-                
-                var handler = provider.GetRequiredService<ISocketSenderMessageHandler>();
-                sockServerService.SetHandler(handler);
-                return sockServerService;
-            });
+            services.AddSingleton<ISocketReceiveMessageHandler, SockServerService>();
+            services.AddSingleton<SockServerService>(); // 필요 시 명시적 등록
             // 기타 Support 서비스
             services.AddSingleton<ICommXmlProtocolService, CommXmlProtocolService>();
 
@@ -56,14 +47,12 @@ namespace RestaurantHost.Main
 
         public static IServiceCollection AddProxyLayer(this IServiceCollection services)
         {
-            services.AddSingleton<SockServerProxy>(provider =>
+            services.AddSingleton<SockServerProxy>();
+            services.AddSingleton<ISocketSenderMessageHandler>(provider =>
             {
-                var proxy = new SockServerProxy();
-                var handler = provider.GetRequiredService<ISocketReceiveMessageHandler>();
-                proxy.SetHandler(handler);
-                return proxy;
+                // proxy 인스턴스를 여기서도 등록
+                return provider.GetRequiredService<SockServerProxy>();
             });
-
             return services;
         }
     }

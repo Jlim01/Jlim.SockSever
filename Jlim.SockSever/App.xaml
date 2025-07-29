@@ -1,7 +1,8 @@
 ﻿<Application x:Class="RestaurantHost.Main.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:RestaurantHost.Main">
+             xmlns:local="clr-namespace:RestaurantHost.Main"
+             Exit="OnExit">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

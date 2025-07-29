@@ -24,7 +24,9 @@ namespace RestaurantHost.Main
             _serviceProvider = services.BuildServiceProvider();
 
             //생성자 호출
-            _ = _serviceProvider.GetRequiredService<SockServerProxy>();
+            var proxy = _serviceProvider.GetRequiredService<SockServerProxy>();
+            var handler = _serviceProvider.GetRequiredService<ISocketReceiveMessageHandler>();
+            proxy.SetHandler(handler);
             _ = _serviceProvider.GetRequiredService<SockServerService>();
             var mainWindow = _serviceProvider.GetRequiredService<MainPage>();
             mainWindow.Show();
@@ -32,8 +34,9 @@ namespace RestaurantHost.Main
 
         private static void RegistDIContainer(ServiceCollection services)
         {
-            services.AddSupportLayer(); // SockServerService + ISocketReceiveMessageHandler
             services.AddProxyLayer();   // SockServerProxy 생성 시 ISocketReceiveMessageHandler 필요
+            services.AddSupportLayer(); // SockServerService + ISocketReceiveMessageHandler
+
             services.AddMainLayer();    // MainPage, ViewModel 등
         }
 

@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -18,7 +19,10 @@ namespace RestaurantHost.Proxy.SockProxy
         private int portNumber;
         private bool ListenRunning = true;
         private ISocketReceiveMessageHandler? _receiveHandler;
-
+        public void SetHandler(ISocketReceiveMessageHandler handler)
+        {
+            _receiveHandler = handler;
+        }
         public SockServerProxy()
         {
             portNumber = 11000; // 기본 포트 번호. 필요시 configure로 변경 가능.
@@ -51,11 +55,7 @@ namespace RestaurantHost.Proxy.SockProxy
                 }
             }
         }
-        public void SetHandler(ISocketReceiveMessageHandler handler)
-        {
-            _receiveHandler = handler;
-            Debug.WriteLine($"[PROXY] Handler 세팅 완료: {_receiveHandler?.GetType().Name}");
-        }
+
 
         // 호출되는 위치
         private void OnDataReceived(int clientId, SockMessage message)
@@ -143,9 +143,10 @@ namespace RestaurantHost.Proxy.SockProxy
             }
         }
 
-        public void OnMessageSend(int clientId, SockMessage message)
+        //proxy는 service로부터 받은 메시지를 client에게 보냄.
+        public void OnMessageSend(int clientId, SockMessage message) 
         {
-            throw new NotImplementedException();
+            Console.WriteLine("send msg to client");
         }
     }
 }
