@@ -4,10 +4,10 @@ using RestaurantHost.Core.Models;
 using System.Diagnostics;
 namespace RestaurantHost.Support.Services
 {
-    public class SockServerService : ISocketSenderMessageHandler, ISocketMessageHandler
+    public class SockServerService : ISocketSenderMessageHandler, ISocketReceiveMessageHandler
     {
         private readonly SocketEnumType _sockType;
-        private ISocketSenderMessageHandler? _handler;
+        private ISocketSenderMessageHandler? _senderHandler;
         public SockServerService(SocketEnumType sockType)
         {
             _sockType = sockType;
@@ -75,13 +75,13 @@ namespace RestaurantHost.Support.Services
 
         public void OnMessageSend(int clientId, SockMessage message)
         {
-            _handler?.OnMessageSend(clientId, message);
+            _senderHandler?.OnMessageSend(clientId, message);
 
         }
         public void SetHandler(ISocketSenderMessageHandler handler)
         {
-            _handler = handler;
-            Debug.WriteLine($"[SUPPORT.Service] Handler 세팅 완료: {_handler?.GetType().Name}");
+            _senderHandler = handler;
+            Debug.WriteLine($"[SUPPORT.Service] Handler 세팅 완료: {_senderHandler?.GetType().Name}");
         }
     }
 }

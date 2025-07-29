@@ -32,8 +32,8 @@ namespace RestaurantHost.Main
 
         private static void RegistDIContainer(ServiceCollection services)
         {
-            services.AddSupportLayer(); // SockServerService + ISocketMessageHandler
-            services.AddProxyLayer();   // SockServerProxy 생성 시 ISocketMessageHandler 필요
+            services.AddSupportLayer(); // SockServerService + ISocketReceiveMessageHandler
+            services.AddProxyLayer();   // SockServerProxy 생성 시 ISocketReceiveMessageHandler 필요
             services.AddMainLayer();    // MainPage, ViewModel 등
         }
 

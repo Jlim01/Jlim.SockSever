@@ -10,14 +10,14 @@ using System.Text.RegularExpressions;
 
 namespace RestaurantHost.Proxy.SockProxy
 {
-    public class SockServerProxy
+    public class SockServerProxy  : ISocketSenderMessageHandler
     {
         private Socket? _listener;
         private readonly ConcurrentDictionary<int, Socket> _clients = new();
         private int _nextClientId = 0;
         private int portNumber;
         private bool ListenRunning = true;
-        private ISocketMessageHandler? _handler;
+        private ISocketReceiveMessageHandler? _receiveHandler;
 
         public SockServerProxy()
         {
@@ -51,23 +51,17 @@ namespace RestaurantHost.Proxy.SockProxy
                 }
             }
         }
-        public void SetHandler(ISocketMessageHandler handler)
+        public void SetHandler(ISocketReceiveMessageHandler handler)
         {
-            _handler = handler;
-            Debug.WriteLine($"[PROXY] Handler 세팅 완료: {_handler?.GetType().Name}");
+            _receiveHandler = handler;
+            Debug.WriteLine($"[PROXY] Handler 세팅 완료: {_receiveHandler?.GetType().Name}");
         }
 
         // 호출되는 위치
         private void OnDataReceived(int clientId, SockMessage message)
         {
             Debug.WriteLine("[PROXY] OnDataReceived 호출됨");
-            _handler?.OnMessageReceived(clientId, message);
-        }
-
-        public void OnDataSend(int clientId, SockMessage message)
-        {
-            Debug.WriteLine("[PROXY] OnDataSend 호출됨");
- 
+            _receiveHandler?.OnMessageReceived(clientId, message);
         }
 
 
@@ -147,6 +141,11 @@ namespace RestaurantHost.Proxy.SockProxy
                     Debug.WriteLine($"Send 실패: {ex.Message}");
                 }
             }
+        }
+
+        public void OnMessageSend(int clientId, SockMessage message)
+        {
+            throw new NotImplementedException();
         }
     }
 }

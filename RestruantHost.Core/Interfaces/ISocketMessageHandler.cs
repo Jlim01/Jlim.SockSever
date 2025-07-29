@@ -2,7 +2,7 @@
 
 namespace RestaurantHost.Core.Interfaces
 {
-    public interface ISocketMessageHandler
+    public interface ISocketReceiveMessageHandler
     {
         void OnMessageReceived(int clientId, SockMessage message);
 
