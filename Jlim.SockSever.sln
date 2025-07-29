@@ -7,11 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantHost.Main", "Jlim
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantHost.Core", "RestruantHost.Core\RestaurantHost.Core.csproj", "{D665018D-6B34-4ED6-9BFA-87318727B601}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantHost.Infrastructure", "RestruantHost.Infrastructure\RestaurantHost.Infrastructure.csproj", "{7540B78B-8170-4ACD-9930-968D633B4BD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantHost.Infrastructure", "RestruantHost.Proxy\RestaurantHost.Infrastructure.csproj", "{4D09C5D2-237D-4C82-8FF2-DB2239E6D950}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantHost.Proxy", "RestruantHost.Proxy\RestaurantHost.Proxy.csproj", "{4D09C5D2-237D-4C82-8FF2-DB2239E6D950}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantHost.Support", "RestrauntHost.Support\RestaurantHost.Support.csproj", "{035843CE-6CF5-4240-9BAC-3449BAB42926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantHost.Service", "RestrauntHost.Support\RestaurantHost.Service.csproj", "{035843CE-6CF5-4240-9BAC-3449BAB42926}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantHost.Test", "RestaurantHost.Test\RestaurantHost.Test.csproj", "{56EDC1E2-6918-4BAC-B01C-39B86755C986}"
 EndProject
@@ -29,10 +27,6 @@ Global
 		{D665018D-6B34-4ED6-9BFA-87318727B601}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D665018D-6B34-4ED6-9BFA-87318727B601}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D665018D-6B34-4ED6-9BFA-87318727B601}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7540B78B-8170-4ACD-9930-968D633B4BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7540B78B-8170-4ACD-9930-968D633B4BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7540B78B-8170-4ACD-9930-968D633B4BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7540B78B-8170-4ACD-9930-968D633B4BD9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4D09C5D2-237D-4C82-8FF2-DB2239E6D950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4D09C5D2-237D-4C82-8FF2-DB2239E6D950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D09C5D2-237D-4C82-8FF2-DB2239E6D950}.Release|Any CPU.ActiveCfg = Release|Any CPU

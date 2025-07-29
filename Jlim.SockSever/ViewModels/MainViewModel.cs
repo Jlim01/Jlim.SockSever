@@ -12,7 +12,7 @@ using System.Windows;
 using CommunityToolkit.Mvvm.Messaging;
 using RestaurantHost.Main.Services.MessengerService;
 using System.Xaml;
-using RestaurantHost.Support.Interfaces.XmlProtocol;
+using RestaurantHost.Service.Interfaces.XmlProtocol;
 
 namespace RestaurantHost.Main.ViewModels
 {

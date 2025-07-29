@@ -3,10 +3,10 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using RestaurantHost.Support.Helpers;
-using RestaurantHost.Support.Interfaces.XmlProtocol;
+using RestaurantHost.Service.Helpers;
+using RestaurantHost.Service.Interfaces.XmlProtocol;
 
-namespace RestaurantHost.Support.Services
+namespace RestaurantHost.Service.Services
 {
     public class CommXmlProtocolService : ICommXmlProtocolService
     {

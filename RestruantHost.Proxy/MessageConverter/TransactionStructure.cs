@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace RestaurantHost.Proxy.MessageConverter
+namespace RestaurantHost.Infrastructure.MessageConverter
 {
     public class TransactionItem
     {

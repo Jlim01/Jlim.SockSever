@@ -18,8 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Jlim.SockSever\RestaurantHost.Main.csproj" />
-    <ProjectReference Include="..\RestrauntHost.Support\RestaurantHost.Support.csproj" />
-    <ProjectReference Include="..\RestruantHost.Infrastructure\RestaurantHost.Infrastructure.csproj" />
+    <ProjectReference Include="..\RestrauntHost.Support\RestaurantHost.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

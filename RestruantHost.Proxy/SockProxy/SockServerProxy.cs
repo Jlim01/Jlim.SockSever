@@ -9,7 +9,7 @@ using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace RestaurantHost.Proxy.SockProxy
+namespace RestaurantHost.Infrastructure.SockProxy
 {
     public class SockServerProxy  : ISocketSenderMessageHandler
     {

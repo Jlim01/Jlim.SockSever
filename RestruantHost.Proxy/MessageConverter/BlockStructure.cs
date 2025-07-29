@@ -1,5 +1,5 @@
 ﻿using RestaurantHost.Core.Models;
-using RestaurantHost.Proxy.SockProxy;
+using RestaurantHost.Infrastructure.SockProxy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace RestaurantHost.Proxy.MessageConverter
+namespace RestaurantHost.Infrastructure.MessageConverter
 {
     public class BlockItem
     {

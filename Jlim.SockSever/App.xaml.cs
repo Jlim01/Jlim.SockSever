@@ -2,10 +2,10 @@
 using RestaurantHost.Core.Enums;
 using RestaurantHost.Core.Interfaces;
 using RestaurantHost.Main.Views;
-using RestaurantHost.Proxy.SockProxy;
-using RestaurantHost.Support;
-using RestaurantHost.Support.Interfaces.XmlProtocol;
-using RestaurantHost.Support.Services;
+using RestaurantHost.Infrastructure.SockProxy;
+using RestaurantHost.Service;
+using RestaurantHost.Service.Interfaces.XmlProtocol;
+using RestaurantHost.Service.Services;
 using System;
 using System.Windows;
 

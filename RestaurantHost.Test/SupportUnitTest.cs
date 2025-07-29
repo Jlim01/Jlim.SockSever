@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestPlatform.Utilities;
 using RestaurantHost.Infrastructure.Models.CommXmlProtocol;
-using RestaurantHost.Support.Models.CommXmlProtocol;
-using RestaurantHost.Support.Services;
+using RestaurantHost.Service.Models.CommXmlProtocol;
+using RestaurantHost.Service.Services;
 using Xunit.Abstractions;
 
 namespace RestaurantHost.Test

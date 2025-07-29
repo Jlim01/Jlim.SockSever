@@ -5,9 +5,9 @@ using RestaurantHost.Main.Interfaces;
 using RestaurantHost.Main.Services;
 using RestaurantHost.Main.ViewModels;
 using RestaurantHost.Main.Views;
-using RestaurantHost.Proxy.SockProxy;
-using RestaurantHost.Support.Interfaces.XmlProtocol;
-using RestaurantHost.Support.Services;
+using RestaurantHost.Infrastructure.SockProxy;
+using RestaurantHost.Service.Interfaces.XmlProtocol;
+using RestaurantHost.Service.Services;
 
 namespace RestaurantHost.Main
 {

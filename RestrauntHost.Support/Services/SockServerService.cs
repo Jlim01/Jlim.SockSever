@@ -2,7 +2,7 @@
 using RestaurantHost.Core.Interfaces;
 using RestaurantHost.Core.Models;
 using System.Diagnostics;
-namespace RestaurantHost.Support.Services
+namespace RestaurantHost.Service.Services
 {
     public class SockServerService : ISocketSenderMessageHandler, ISocketReceiveMessageHandler
     {

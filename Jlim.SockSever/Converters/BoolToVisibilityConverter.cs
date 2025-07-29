@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace RestaurantHost.Support.Converters
+namespace RestaurantHost.Service.Converters
 {
     internal class BoolToVisibilityConverter : IValueConverter
     {
